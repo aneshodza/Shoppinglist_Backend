@@ -29,10 +29,10 @@ public class WholeRepository {
         );
 
         people.add(
-                new Person("Anes", "Hodza", "1234", "anes.hodza")
+                new Person("Anes", "Hodza", "12345678", "anes.hodza")
         );
         people.add(
-                new Person("Meriton", "Aliu", "freg546gtr56", "meriton.aliu")
+                    new Person("Meriton", "Aliu", "12345678", "meriton.aliu")
         );
 
         items.add(
@@ -58,6 +58,13 @@ public class WholeRepository {
 
     public Person getPersonAtIndex(int index) {
         return getPeople().get(index);
+    }
+
+    public boolean createNewPerson(Person person) {
+        people.add(
+                new Person(person.getFirst_name(), person.getLast_name(), person.getPassword(), person.getUsername())
+        );
+        return true;
     }
 
     public ArrayList<Item> getItems() {

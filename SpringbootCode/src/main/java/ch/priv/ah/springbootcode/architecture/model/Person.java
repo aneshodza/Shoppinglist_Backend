@@ -30,6 +30,10 @@ public class Person {
     public Person() {
     }
 
+    public Person(String username) {
+        this.username = username;
+    }
+
     public Person(String username, String password) {
         this.username = username;
         this.password = password;
