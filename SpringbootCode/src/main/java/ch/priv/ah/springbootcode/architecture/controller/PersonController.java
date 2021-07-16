@@ -1,10 +1,9 @@
 package ch.priv.ah.springbootcode.architecture.controller;
 
+import ch.priv.ah.springbootcode.architecture.model.Person;
 import ch.priv.ah.springbootcode.architecture.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -28,5 +27,10 @@ public class PersonController {
     @GetMapping
     public ArrayList getAllPeople() {
         return personService.getAllPeople();
+    }
+
+    @PostMapping
+    public Person attemptLogIn(@RequestBody Person person) {
+        return personService.checkForUser(person);
     }
 }

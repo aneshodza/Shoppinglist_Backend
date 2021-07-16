@@ -27,6 +27,14 @@ public class Person {
         groupIds = new ArrayList<>();
     }
 
+    public Person() {
+    }
+
+    public Person(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public void addGroup(long newGroupId) {
         groupIds.add(newGroupId);
     }
