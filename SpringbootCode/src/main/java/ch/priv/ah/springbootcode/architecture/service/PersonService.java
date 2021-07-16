@@ -1,5 +1,6 @@
 package ch.priv.ah.springbootcode.architecture.service;
 
+import ch.priv.ah.springbootcode.architecture.model.Person;
 import ch.priv.ah.springbootcode.architecture.persistence.WholeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,15 @@ public class PersonService {
 
     public ArrayList getAllPeople() {
         return wholeRepository.getPeople();
+    }
+
+    public Person checkForUser(Person person) {
+        for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
+            if (wholeRepository.getPersonAtIndex(i).getUsername().equals(person.getUsername()) &&
+                    wholeRepository.getPersonAtIndex(i).getPassword().equals(person.getPassword())) {
+                return wholeRepository.getPersonAtIndex(i);
+            }
+        }
+    return new Person("There is no such user", "");
     }
 }

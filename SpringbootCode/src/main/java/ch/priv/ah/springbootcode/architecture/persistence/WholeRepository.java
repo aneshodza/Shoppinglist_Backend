@@ -29,7 +29,7 @@ public class WholeRepository {
         );
 
         people.add(
-                new Person("Anes", "Hodza", "bj6IOTjaAuxoU5OTf5ur", "anes.hodza")
+                new Person("Anes", "Hodza", "1234", "anes.hodza")
         );
         people.add(
                 new Person("Meriton", "Aliu", "freg546gtr56", "meriton.aliu")
@@ -54,6 +54,10 @@ public class WholeRepository {
 
     public ArrayList<Person> getPeople() {
         return people;
+    }
+
+    public Person getPersonAtIndex(int index) {
+        return getPeople().get(index);
     }
 
     public ArrayList<Item> getItems() {
