@@ -34,6 +34,27 @@ public class PersonService {
                 return wholeRepository.getPersonAtIndex(i);
             }
         }
-    return new Person("There is no such user", "");
+    return new Person("There is no such user");
+    }
+
+    public boolean checkIfUsernameIsUsed(Person person) {
+        for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
+            if (wholeRepository.getPersonAtIndex(i).getUsername().equals(person.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Person createNewPerson(Person person){
+        if (checkIfUsernameIsUsed(person)) {
+            return new Person("Username is already in use");
+        } else if (person.getPassword().length() < 8) {
+            return new Person("Password is not 8 characters long");
+        } else if (person.getUsername().isBlank()) {
+            return new Person("Username cannot be empty");
+        }
+        wholeRepository.createNewPerson(person);
+        return new Person("Created new user");
     }
 }

@@ -33,4 +33,9 @@ public class PersonController {
     public Person attemptLogIn(@RequestBody Person person) {
         return personService.checkForUser(person);
     }
+
+    @PutMapping
+    public Person signUp(@RequestBody Person person) {
+        return personService.createNewPerson(person);
+    }
 }
