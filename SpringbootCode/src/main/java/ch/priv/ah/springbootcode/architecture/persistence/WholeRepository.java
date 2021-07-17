@@ -6,6 +6,7 @@ import ch.priv.ah.springbootcode.architecture.model.Person;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * @class: WholeRepository
@@ -57,8 +58,32 @@ public class WholeRepository {
         return groups;
     }
 
+    public Group getGroupById(long id) {
+        return groups
+                .stream()
+                .filter(group -> group.getId() == id)
+                .findFirst()
+                .get();
+    }
+
+    public Group getGroupByUrl(String url) {
+        return groups
+                .stream()
+                .filter(group -> group.getGroupUrl().equals(url))
+                .findFirst()
+                .get();
+    }
+
     public ArrayList<Person> getPeople() {
         return people;
+    }
+
+    public Person getPersonById(long id) {
+        return people
+                .stream()
+                .filter(person -> person.getId() == id)
+                .findFirst()
+                .get();
     }
 
     public Person createNewPerson(Person person) {
@@ -70,5 +95,9 @@ public class WholeRepository {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public void removeItemById(long id) {
+        items.removeIf(item -> item.getId() == id);
     }
 }

@@ -22,4 +22,7 @@ This call needs a RequestBody with a full user. It returns a Person with the sta
 #### _Get(path = "./items")_
 This call returns all the groups that exist
 
+#### _Delete(path = "./items/{id}")_
+This call deletes the item with that id
+
 ###### All this code was written by Anes Hodza
