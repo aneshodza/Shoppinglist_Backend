@@ -39,6 +39,15 @@ public class PersonController {
         return personService.createNewPerson(person);
     }
 
+    @GetMapping(path = "/{id}")
+    public Person getUserById (@PathVariable long id, @RequestBody Person person) {
+        Person retPerson = personService.getPersonById(id);
+        if (retPerson.getUsername().equals(person.getUsername()) && retPerson.getPassword().equals(person.getPassword())){
+            return retPerson;
+        }
+        return new Person(1, "There is no such user");
+    }
+
     @GetMapping(path = "/{id}/my-groups")
     public ArrayList getMyGroups(@PathVariable long id) {
         return personService.getAllMyGroups(id);
