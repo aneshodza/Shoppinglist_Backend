@@ -38,4 +38,9 @@ public class PersonController {
     public Person signUp(@RequestBody Person person) {
         return personService.createNewPerson(person);
     }
+
+    @GetMapping(path = "/{id}/my-groups")
+    public ArrayList getMyGroups(@PathVariable long id) {
+        return personService.getAllMyGroups(id);
+    }
 }

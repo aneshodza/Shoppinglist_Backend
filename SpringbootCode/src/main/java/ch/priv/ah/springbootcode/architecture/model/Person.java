@@ -1,6 +1,7 @@
 package ch.priv.ah.springbootcode.architecture.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @class: Person
@@ -41,6 +42,7 @@ public class Person {
 
     public void addGroup(long newGroupId) {
         groupIds.add(newGroupId);
+        Collections.sort(this.groupIds);
     }
 
     public static long getNewestId() {
