@@ -27,6 +27,9 @@ public class WholeRepository {
         groups.add(
                 new Group("Test group")
         );
+        groups.add(
+                new Group("Second test group")
+        );
 
         people.add(
                 new Person("Anes", "Hodza", "12345678", "anes.hodza")
@@ -42,8 +45,10 @@ public class WholeRepository {
                 new Item("Milk", "I'm going to bake some cookies")
         );
 
+        groups.get(1).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(1));
+
         groups.get(0).addItemToThisGroup(items.get(0), people.get(0).getId());
         groups.get(0).addItemToThisGroup(items.get(1), people.get(1).getId());
     }

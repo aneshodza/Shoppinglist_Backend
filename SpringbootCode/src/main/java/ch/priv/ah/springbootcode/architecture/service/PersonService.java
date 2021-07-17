@@ -1,10 +1,12 @@
 package ch.priv.ah.springbootcode.architecture.service;
 
+import ch.priv.ah.springbootcode.architecture.model.Group;
 import ch.priv.ah.springbootcode.architecture.model.Person;
 import ch.priv.ah.springbootcode.architecture.persistence.WholeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -25,6 +27,15 @@ public class PersonService {
 
     public ArrayList getAllPeople() {
         return wholeRepository.getPeople();
+    }
+
+    public Person getPersonById(long id) {
+        for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
+            if (id == wholeRepository.getPersonAtIndex(i).getId()) {
+                return wholeRepository.getPersonAtIndex(i);
+            }
+        }
+        return null;
     }
 
     public Person checkForUser(Person person) {
@@ -56,5 +67,20 @@ public class PersonService {
         }
         wholeRepository.createNewPerson(person);
         return new Person(0, "Created new user");
+    }
+
+    public ArrayList getAllMyGroups(long id) {
+        ArrayList<Group> myGroups = new ArrayList<>();
+        int newestGroupIndex = 0;
+        for (int i = 0; i < getPersonById(id).getGroupIds().size(); i++) {
+            for (int j = newestGroupIndex; j < wholeRepository.getGroups().size(); j++) {
+                if (getPersonById(id).getGroupIds().get(i).equals(wholeRepository.getGroups().get(j).getId())) {
+                    myGroups.add(wholeRepository.getGroups().get(j));
+                    newestGroupIndex = j;
+                    break;
+                }
+            }
+        }
+        return myGroups;
     }
 }
