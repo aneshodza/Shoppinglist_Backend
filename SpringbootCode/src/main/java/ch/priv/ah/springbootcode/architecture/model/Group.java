@@ -23,7 +23,18 @@ public class Group {
     public Group(String groupName) {
         this.id = newestId;
         newestId++;
-        this.groupUrl = randomString.getAlphaNumericString(10);
+        boolean abort = false;
+        String newUrl = "";
+        while (!abort) {
+            abort = true;
+            newUrl = randomString.getAlphaNumericString(10);
+            for (int i = 0; i < usedUrls.size(); i++) {
+                if (newUrl.equals(usedUrls.get(i))) {
+                    abort = false;
+                }
+            }
+        }
+        this.groupUrl = newUrl;
         this.groupName = groupName;
         members = new ArrayList<>();
         items = new ArrayList<>();
