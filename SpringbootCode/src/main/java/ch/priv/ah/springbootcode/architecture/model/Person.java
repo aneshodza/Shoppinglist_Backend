@@ -30,7 +30,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String username) {
+    public Person(long id, String username) {
         this.username = username;
     }
 

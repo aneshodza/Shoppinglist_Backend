@@ -34,7 +34,7 @@ public class PersonService {
                 return wholeRepository.getPersonAtIndex(i);
             }
         }
-    return new Person("There is no such user");
+    return new Person(1, "There is no such user");
     }
 
     public boolean checkIfUsernameIsUsed(Person person) {
@@ -48,13 +48,13 @@ public class PersonService {
 
     public Person createNewPerson(Person person){
         if (checkIfUsernameIsUsed(person)) {
-            return new Person("Username is already in use");
+            return new Person(2, "Username is already in use");
         } else if (person.getPassword().length() < 8) {
-            return new Person("Password is not 8 characters long");
+            return new Person(3, "Password is not 8 characters long");
         } else if (person.getUsername().isBlank()) {
-            return new Person("Username cannot be empty");
+            return new Person(4, "Username cannot be empty");
         }
         wholeRepository.createNewPerson(person);
-        return new Person("Created new user");
+        return new Person(0, "Created new user");
     }
 }
