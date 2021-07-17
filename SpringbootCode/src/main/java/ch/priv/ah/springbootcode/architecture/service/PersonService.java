@@ -31,8 +31,8 @@ public class PersonService {
 
     public Person getPersonById(long id) {
         for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
-            if (id == wholeRepository.getPersonAtIndex(i).getId()) {
-                return wholeRepository.getPersonAtIndex(i);
+            if (id == wholeRepository.getPeople().get(i).getId()) {
+                return wholeRepository.getPeople().get(i);
             }
         }
         return null;
@@ -40,9 +40,9 @@ public class PersonService {
 
     public Person checkForUser(Person person) {
         for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
-            if (wholeRepository.getPersonAtIndex(i).getUsername().equals(person.getUsername()) &&
-                    wholeRepository.getPersonAtIndex(i).getPassword().equals(person.getPassword())) {
-                return wholeRepository.getPersonAtIndex(i);
+            if (wholeRepository.getPeople().get(i).getUsername().equals(person.getUsername()) &&
+                    wholeRepository.getPeople().get(i).getPassword().equals(person.getPassword())) {
+                return wholeRepository.getPeople().get(i);
             }
         }
     return new Person(1, "There is no such user");
@@ -50,7 +50,7 @@ public class PersonService {
 
     public boolean checkIfUsernameIsUsed(Person person) {
         for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
-            if (wholeRepository.getPersonAtIndex(i).getUsername().equals(person.getUsername())) {
+            if (wholeRepository.getPeople().get(i).getUsername().equals(person.getUsername())) {
                 return true;
             }
         }

@@ -61,10 +61,6 @@ public class WholeRepository {
         return people;
     }
 
-    public Person getPersonAtIndex(int index) {
-        return getPeople().get(index);
-    }
-
     public Person createNewPerson(Person person) {
         people.add(
                 new Person(person.getFirst_name(), person.getLast_name(), person.getPassword(), person.getUsername())

@@ -2,6 +2,8 @@
 ## **Group**
 ### _Get(path = "./groups")_
 This call returns all the groups that exist
+### _Get(path = "./groups/{groupUrl}")_
+This call returns the group with the searched url
 
 ## **Person**
 #### _Get(path = "./people")_
