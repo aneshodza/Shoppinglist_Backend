@@ -7,7 +7,10 @@ This call returns all the groups that exist
 #### _Get(path = "./people")_
 This call returns all the groups that exist
 
-#### _Put(path = "./people/{id}/my-groups")_
+#### _Get(path = "./people/{id}")_
+This call returns the user with this id. The call requires a RequestBody with the users password and username
+
+#### _Get(path = "./people/{id}/my-groups")_
 This call returns all the groups the user is in
 
 #### _Post(path = "./people")_
