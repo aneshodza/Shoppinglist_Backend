@@ -65,8 +65,7 @@ public class PersonService {
         } else if (person.getUsername().isBlank()) {
             return new Person(4, "Username cannot be empty");
         }
-        wholeRepository.createNewPerson(person);
-        return new Person(0, "Created new user");
+        return wholeRepository.createNewPerson(person);
     }
 
     public ArrayList getAllMyGroups(long id) {

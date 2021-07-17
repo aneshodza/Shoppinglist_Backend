@@ -65,11 +65,11 @@ public class WholeRepository {
         return getPeople().get(index);
     }
 
-    public boolean createNewPerson(Person person) {
+    public Person createNewPerson(Person person) {
         people.add(
                 new Person(person.getFirst_name(), person.getLast_name(), person.getPassword(), person.getUsername())
         );
-        return true;
+        return new Person(person.getFirst_name(), person.getLast_name(), person.getPassword(), person.getUsername());
     }
 
     public ArrayList<Item> getItems() {
