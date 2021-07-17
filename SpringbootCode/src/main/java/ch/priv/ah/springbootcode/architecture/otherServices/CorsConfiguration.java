@@ -22,6 +22,9 @@ public class CorsConfiguration {
                 registry.addMapping("/people")
                         .allowedMethods("GET", "POST", "PUT")
                         .allowedOrigins("http://localhost:3000");
+                registry.addMapping("/people/{id}")
+                        .allowedMethods("POST")
+                        .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/people/{id}/my-groups")
                         .allowedMethods("GET")
                         .allowedOrigins("http://localhost:3000");
