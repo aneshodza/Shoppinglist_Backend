@@ -2,9 +2,7 @@ package ch.priv.ah.springbootcode.architecture.controller;
 
 import ch.priv.ah.springbootcode.architecture.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -28,5 +26,11 @@ public class ItemController {
     @GetMapping
     public ArrayList getAllPeople() {
         return itemService.getAllItems();
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public boolean deleteItemWithId(@PathVariable long id) {
+        itemService.deleteItemWithId(id);
+        return true;
     }
 }

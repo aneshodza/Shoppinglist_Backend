@@ -28,11 +28,6 @@ public class GroupService {
     }
 
     public Group getGroupByUrl(String url) {
-        for (int i = 0; i < wholeRepository.getGroups().size(); i++) {
-            if (url.equals(wholeRepository.getGroups().get(i).getGroupUrl())){
-                return wholeRepository.getGroups().get(i);
-            }
-        }
-        return null;
+        return wholeRepository.getGroupByUrl(url);
     }
 }

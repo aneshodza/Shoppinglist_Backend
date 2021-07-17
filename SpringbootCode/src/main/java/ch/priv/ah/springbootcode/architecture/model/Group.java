@@ -51,6 +51,10 @@ public class Group {
         item.setPersonId(personId);
     }
 
+    public void removeItemFromThisGroup(long id) {
+        items.removeIf(item -> item.getId() == id);
+    }
+
     public static long getNewestId() {
         return newestId;
     }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * @class: PersonService
@@ -27,15 +28,6 @@ public class PersonService {
 
     public ArrayList getAllPeople() {
         return wholeRepository.getPeople();
-    }
-
-    public Person getPersonById(long id) {
-        for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
-            if (id == wholeRepository.getPeople().get(i).getId()) {
-                return wholeRepository.getPeople().get(i);
-            }
-        }
-        return null;
     }
 
     public Person checkForUser(Person person) {
@@ -69,17 +61,9 @@ public class PersonService {
     }
 
     public ArrayList getAllMyGroups(long id) {
-        ArrayList<Group> myGroups = new ArrayList<>();
-        int newestGroupIndex = 0;
-        for (int i = 0; i < getPersonById(id).getGroupIds().size(); i++) {
-            for (int j = newestGroupIndex; j < wholeRepository.getGroups().size(); j++) {
-                if (getPersonById(id).getGroupIds().get(i).equals(wholeRepository.getGroups().get(j).getId())) {
-                    myGroups.add(wholeRepository.getGroups().get(j));
-                    newestGroupIndex = j;
-                    break;
-                }
-            }
-        }
-        return myGroups;
+        return (ArrayList<Group>) wholeRepository.getGroups()
+                .stream()
+                .filter(group -> wholeRepository.getPersonById(id).getGroupIds().contains(group.getId()))
+                .collect(Collectors.toList());
     }
 }
