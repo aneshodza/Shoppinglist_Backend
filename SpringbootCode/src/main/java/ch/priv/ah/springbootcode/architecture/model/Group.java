@@ -45,10 +45,13 @@ public class Group {
         person.addGroup(this.id);
     }
 
-    public void addItemToThisGroup(Item item, long personId) {
+    public void addItemToThisGroup(Item item) {
         items.add(item);
         item.setGroupId(this.id);
-        item.setPersonId(personId);
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
     }
 
     public void removeItemFromThisGroup(long id) {

@@ -40,18 +40,18 @@ public class WholeRepository {
         );
 
         items.add(
-                new Item("Batteries", "Buy them quick")
+                new Item("Batteries", "Buy them quick", 0)
         );
         items.add(
-                new Item("Milk", "I'm going to bake some cookies")
+                new Item("Milk", "I'm going to bake some cookies", 1)
         );
 
         groups.get(1).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(1));
 
-        groups.get(0).addItemToThisGroup(items.get(0), people.get(0).getId());
-        groups.get(0).addItemToThisGroup(items.get(1), people.get(1).getId());
+        groups.get(0).addItemToThisGroup(items.get(0));
+        groups.get(0).addItemToThisGroup(items.get(1));
     }
 
     public ArrayList<Group> getGroups() {
@@ -99,5 +99,15 @@ public class WholeRepository {
 
     public void removeItemById(long id) {
         items.removeIf(item -> item.getId() == id);
+    }
+
+    public void addNewItem(Item item) {
+        items.add(item);
+        groups
+                .stream()
+                .filter(group -> group.getId() == item.getGroupId())
+                .findFirst()
+                .get()
+                .addItem(item);
     }
 }

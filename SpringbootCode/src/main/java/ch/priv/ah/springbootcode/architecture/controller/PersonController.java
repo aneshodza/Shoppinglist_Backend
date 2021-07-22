@@ -1,6 +1,7 @@
 package ch.priv.ah.springbootcode.architecture.controller;
 
 import ch.priv.ah.springbootcode.architecture.model.Person;
+import ch.priv.ah.springbootcode.architecture.otherServices.ReturnMessage;
 import ch.priv.ah.springbootcode.architecture.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +31,12 @@ public class PersonController {
     }
 
     @PutMapping
-    public Person attemptLogIn(@RequestBody Person person) {
+    public Object attemptLogIn(@RequestBody Person person) {
         return personService.checkForUser(person);
     }
 
     @PostMapping
-    public Person signUp(@RequestBody Person person) {
+    public ReturnMessage signUp(@RequestBody Person person) {
         return personService.createNewPerson(person);
     }
 
