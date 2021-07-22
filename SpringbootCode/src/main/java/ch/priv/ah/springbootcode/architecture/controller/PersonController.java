@@ -29,12 +29,12 @@ public class PersonController {
         return personService.getAllPeople();
     }
 
-    @PostMapping
+    @PutMapping
     public Person attemptLogIn(@RequestBody Person person) {
         return personService.checkForUser(person);
     }
 
-    @PutMapping
+    @PostMapping
     public Person signUp(@RequestBody Person person) {
         return personService.createNewPerson(person);
     }
