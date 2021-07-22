@@ -33,10 +33,7 @@ public class CorsConfiguration {
                         .allowedMethods("GET")
                         .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/items/{id}")
-                        .allowedMethods("DELETE")
-                        .allowedOrigins("http://localhost:3000");
-                registry.addMapping("/items/{groupId}")
-                        .allowedMethods("PUT")
+                        .allowedMethods("DELETE", "PUT")
                         .allowedOrigins("http://localhost:3000");
 
                 registry.addMapping("/groups")
