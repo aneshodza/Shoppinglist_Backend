@@ -12,11 +12,11 @@ This call returns all the groups that exist
 #### _Get(path = "./people/{id}/my-groups")_
 This call returns all the groups the user is in
 
-#### _Post(path = "./people/{id}")_
+#### _Put(path = "./people/{id}")_
 This call returns the user with this id. The call requires a RequestBody with the users password and username
 
-#### _Put(path = "./people")_
-This call needs a RequestBody with a full user. It returns a Person with the status as it's username
+#### _Post(path = "./people")_
+This call needs a RequestBody with a full user. It returns a message and a code
 
 ## **Item**
 #### _Get(path = "./items")_
