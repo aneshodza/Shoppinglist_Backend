@@ -15,13 +15,16 @@ public class Item {
     private long personId;
     private long groupId;
 
-    public Item(String itemName, String message) {
+    public Item(String itemName, String message, long personId) {
         this.id = newestId;
         newestId++;
         this.itemName = itemName;
         this.message = message;
+        this.personId = personId;
         this.alreadyBought = false;
     }
+
+
 
     public void setPersonId(long personId) {
         this.personId = personId;
