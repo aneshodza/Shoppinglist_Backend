@@ -34,6 +34,7 @@ public class Group {
                 }
             }
         }
+        usedUrls.add(newUrl);
         this.groupUrl = newUrl;
         this.groupName = groupName;
         members = new ArrayList<>();

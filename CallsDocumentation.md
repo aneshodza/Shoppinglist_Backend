@@ -28,4 +28,8 @@ This call deletes the item with that id
 #### _Put(path = "./items/{groupId}")_
 This call creates a new item and takes the item as the requestBody
 
+## **Invitation**
+#### _Get(path = "./invitations")_
+This call returns all invitations that exist
+
 ###### All this code was written by Anes Hodza

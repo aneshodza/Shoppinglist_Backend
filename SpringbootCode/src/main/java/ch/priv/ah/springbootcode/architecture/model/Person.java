@@ -1,5 +1,7 @@
 package ch.priv.ah.springbootcode.architecture.model;
 
+import ch.priv.ah.springbootcode.architecture.otherServices.RandomString;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,6 +14,9 @@ import java.util.Collections;
 public class Person {
     private static long newestId;
     private long id;
+    private static ArrayList<String> usedNumbers = new ArrayList<>();
+    private static final RandomString randomString = new RandomString();
+    private String own_number;
     private String first_name;
     private String last_name;
     private String username;
@@ -22,6 +27,19 @@ public class Person {
     public Person(String first_name, String last_name, String password, String username) {
         this.id = newestId;
         newestId++;
+        boolean abort = false;
+        String newNumber = "";
+        while (!abort) {
+            abort = true;
+            newNumber = randomString.getAlphaNumericString(10);
+            for (int i = 0; i < usedNumbers.size(); i++) {
+                if (newNumber.equals(usedNumbers.get(i))) {
+                    abort = false;
+                }
+            }
+        }
+        usedNumbers.add(newNumber);
+        this.own_number = newNumber;
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -49,7 +67,7 @@ public class Person {
 
     public void addInvitation(Invitation invitation) {
         invitations.add(invitation);
-        invitation.setRecieverId(this.id);
+        invitation.setRecieverNumber(this.own_number);
     }
 
     public static long getNewestId() {
@@ -58,6 +76,14 @@ public class Person {
 
     public long getId() {
         return id;
+    }
+
+    public String getOwn_number() {
+        return own_number;
+    }
+
+    public void setOwn_number(String own_number) {
+        this.own_number = own_number;
     }
 
     public String getFirst_name() {

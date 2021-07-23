@@ -14,18 +14,18 @@ public class Invitation {
     private boolean isOpen;
     private boolean hasBeenAccepted;
     private LocalDateTime whenSent;
-    private long senderId;
-    private long recieverId;
-    private long groupId;
+    private String senderNumber;
+    private String recieverNumber;
+    private String groupUrl;
 
-    public Invitation(long senderId, long groupId) {
+    public Invitation(String senderNumber, String groupUrl) {
         this.id = newestId;
         newestId++;
         this.whenSent = LocalDateTime.now();
         this.isOpen = true;
         this.hasBeenAccepted = false;
-        this.senderId = senderId;
-        this.groupId = groupId;
+        this.senderNumber = senderNumber;
+        this.groupUrl = groupUrl;
     }
 
     public long getId() {
@@ -60,28 +60,28 @@ public class Invitation {
         this.whenSent = whenSent;
     }
 
-    public long getSenderId() {
-        return senderId;
+    public String getSenderNumber() {
+        return senderNumber;
     }
 
-    public void setSenderId(long senderId) {
-        this.senderId = senderId;
+    public void setSenderNumber(String senderNumber) {
+        this.senderNumber = senderNumber;
     }
 
-    public long getRecieverId() {
-        return recieverId;
+    public String getRecieverNumber() {
+        return recieverNumber;
     }
 
-    public void setRecieverId(long recieverId) {
-        this.recieverId = recieverId;
+    public void setRecieverNumber(String recieverNumber) {
+        this.recieverNumber = recieverNumber;
     }
 
-    public long getGroupId() {
-        return groupId;
+    public String getGroupUrl() {
+        return groupUrl;
     }
 
-    public void setGroupId(long groupId) {
-        this.groupId = groupId;
+    public void setGroupUrl(String groupUrl) {
+        this.groupUrl = groupUrl;
     }
 
     @Override
@@ -91,9 +91,9 @@ public class Invitation {
                 ", isOpen=" + isOpen +
                 ", hasBeenAccepted=" + hasBeenAccepted +
                 ", whenSent=" + whenSent +
-                ", senderId=" + senderId +
-                ", recieverId=" + recieverId +
-                ", groupId=" + groupId +
+                ", senderNumber=" + senderNumber +
+                ", recieverNumber=" + recieverNumber +
+                ", groupUrl=" + groupUrl +
                 '}';
     }
 }
