@@ -1,5 +1,7 @@
 package ch.priv.ah.springbootcode.architecture.model;
 
+import java.time.LocalDateTime;
+
 /**
  * @class: Invitation
  * @author: Anes Hodza
@@ -11,6 +13,7 @@ public class Invitation {
     private long id;
     private boolean isOpen;
     private boolean hasBeenAccepted;
+    private LocalDateTime whenSent;
     private long senderId;
     private long recieverId;
     private long groupId;
@@ -18,6 +21,7 @@ public class Invitation {
     public Invitation(long senderId, long groupId) {
         this.id = newestId;
         newestId++;
+        this.whenSent = LocalDateTime.now();
         this.isOpen = true;
         this.hasBeenAccepted = false;
         this.senderId = senderId;
@@ -46,6 +50,14 @@ public class Invitation {
 
     public void setHasBeenAccepted(boolean hasBeenAccepted) {
         this.hasBeenAccepted = hasBeenAccepted;
+    }
+
+    public LocalDateTime getWhenSent() {
+        return whenSent;
+    }
+
+    public void setWhenSent(LocalDateTime whenSent) {
+        this.whenSent = whenSent;
     }
 
     public long getSenderId() {
@@ -78,6 +90,7 @@ public class Invitation {
                 "id=" + id +
                 ", isOpen=" + isOpen +
                 ", hasBeenAccepted=" + hasBeenAccepted +
+                ", whenSent=" + whenSent +
                 ", senderId=" + senderId +
                 ", recieverId=" + recieverId +
                 ", groupId=" + groupId +
