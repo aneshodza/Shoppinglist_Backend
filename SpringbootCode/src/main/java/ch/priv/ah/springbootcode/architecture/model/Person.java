@@ -14,9 +14,9 @@ import java.util.Collections;
 public class Person {
     private static long newestId;
     private long id;
-    private static ArrayList<String> usedNumbers = new ArrayList<>();
+    private static ArrayList<String> usedUrls = new ArrayList<>();
     private static final RandomString randomString = new RandomString();
-    private String own_number;
+    private String ownUrl;
     private String first_name;
     private String last_name;
     private String username;
@@ -28,18 +28,18 @@ public class Person {
         this.id = newestId;
         newestId++;
         boolean abort = false;
-        String newNumber = "";
+        String newUrl = "";
         while (!abort) {
             abort = true;
-            newNumber = randomString.getAlphaNumericString(10);
-            for (int i = 0; i < usedNumbers.size(); i++) {
-                if (newNumber.equals(usedNumbers.get(i))) {
+            newUrl = randomString.getAlphaNumericString(5);
+            for (int i = 0; i < usedUrls.size(); i++) {
+                if (newUrl.equals(usedUrls.get(i))) {
                     abort = false;
                 }
             }
         }
-        usedNumbers.add(newNumber);
-        this.own_number = newNumber;
+        usedUrls.add(newUrl);
+        this.ownUrl = newUrl;
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -67,7 +67,7 @@ public class Person {
 
     public void addInvitation(Invitation invitation) {
         invitations.add(invitation);
-        invitation.setRecieverNumber(this.own_number);
+        invitation.setRecieverNumber(this.ownUrl);
     }
 
     public static long getNewestId() {
@@ -78,12 +78,12 @@ public class Person {
         return id;
     }
 
-    public String getOwn_number() {
-        return own_number;
+    public String getownUrl() {
+        return ownUrl;
     }
 
-    public void setOwn_number(String own_number) {
-        this.own_number = own_number;
+    public void setownUrl(String ownUrl) {
+        this.ownUrl = ownUrl;
     }
 
     public String getFirst_name() {

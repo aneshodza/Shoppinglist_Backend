@@ -50,7 +50,7 @@ public class WholeRepository {
         );
 
         invitations.add(
-                new Invitation(people.get(0).getOwn_number(), groups.get(1).getGroupUrl())
+                new Invitation(people.get(0).getownUrl(), groups.get(1).getGroupUrl())
         );
 
         groups.get(1).addPersonToThisGroup(people.get(0));
