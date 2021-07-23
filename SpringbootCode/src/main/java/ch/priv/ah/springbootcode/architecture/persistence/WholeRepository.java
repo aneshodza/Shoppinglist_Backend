@@ -1,6 +1,7 @@
 package ch.priv.ah.springbootcode.architecture.persistence;
 
 import ch.priv.ah.springbootcode.architecture.model.Group;
+import ch.priv.ah.springbootcode.architecture.model.Invitation;
 import ch.priv.ah.springbootcode.architecture.model.Item;
 import ch.priv.ah.springbootcode.architecture.model.Person;
 import org.springframework.stereotype.Repository;
@@ -19,11 +20,13 @@ public class WholeRepository {
     ArrayList<Group> groups;
     ArrayList<Person> people;
     ArrayList<Item> items;
+    ArrayList<Invitation> invitations;
 
     public WholeRepository() {
         groups = new ArrayList<>();
         people = new ArrayList<>();
         items = new ArrayList<>();
+        invitations = new ArrayList<>();
 
         groups.add(
                 new Group("Test group")
@@ -46,12 +49,18 @@ public class WholeRepository {
                 new Item("Milk", "I'm going to bake some cookies", 1)
         );
 
+        invitations.add(
+                new Invitation(0, 1)
+        );
+
         groups.get(1).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(1));
 
         groups.get(0).addItemToThisGroup(items.get(0));
         groups.get(0).addItemToThisGroup(items.get(1));
+
+        people.get(1).addInvitation(invitations.get(0));
     }
 
     public ArrayList<Group> getGroups() {
@@ -109,5 +118,13 @@ public class WholeRepository {
                 .findFirst()
                 .get()
                 .addItem(item);
+    }
+
+    public ArrayList<Invitation> getInvitations() {
+        return invitations;
+    }
+
+    public void setInvitations(ArrayList<Invitation> invitations) {
+        this.invitations = invitations;
     }
 }

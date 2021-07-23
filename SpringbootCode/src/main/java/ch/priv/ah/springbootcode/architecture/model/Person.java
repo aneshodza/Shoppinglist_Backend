@@ -17,6 +17,7 @@ public class Person {
     private String username;
     private String password;
     private ArrayList<Long> groupIds;
+    private ArrayList<Invitation> invitations;
 
     public Person(String first_name, String last_name, String password, String username) {
         this.id = newestId;
@@ -26,6 +27,7 @@ public class Person {
         this.username = username;
         this.password = password;
         groupIds = new ArrayList<>();
+        invitations = new ArrayList<>();
     }
 
     public Person() {
@@ -43,6 +45,11 @@ public class Person {
     public void addGroup(long newGroupId) {
         groupIds.add(newGroupId);
         Collections.sort(this.groupIds);
+    }
+
+    public void addInvitation(Invitation invitation) {
+        invitations.add(invitation);
+        invitation.setRecieverId(this.id);
     }
 
     public static long getNewestId() {
@@ -73,6 +80,14 @@ public class Person {
         return groupIds;
     }
 
+    public ArrayList<Invitation> getInvitations() {
+        return invitations;
+    }
+
+    public void setInvitations(ArrayList<Invitation> invitations) {
+        this.invitations = invitations;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -81,7 +96,8 @@ public class Person {
                 ", last_name='" + last_name + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", groupIds=" + groupIds +
+                ", groupIds=" + groupIds + '\'' +
+                ", invitations=" + invitations +
                 '}';
     }
 }
