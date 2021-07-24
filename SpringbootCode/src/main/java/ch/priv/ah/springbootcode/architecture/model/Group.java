@@ -41,6 +41,16 @@ public class Group {
         items = new ArrayList<>();
     }
 
+    public Group(String groupName, String groupUrl) {
+        this.id = newestId;
+        newestId++;
+        usedUrls.add(groupUrl);
+        this.groupUrl = groupUrl;
+        this.groupName = groupName;
+        members = new ArrayList<>();
+        items = new ArrayList<>();
+    }
+
     public void addPersonToThisGroup(Person person) {
         members.add(person);
         person.addGroup(this.id);

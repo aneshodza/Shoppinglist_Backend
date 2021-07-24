@@ -1,11 +1,10 @@
 package ch.priv.ah.springbootcode.architecture.controller;
 
 import ch.priv.ah.springbootcode.architecture.model.Invitation;
+import ch.priv.ah.springbootcode.architecture.otherServices.ReturnMessage;
 import ch.priv.ah.springbootcode.architecture.service.InvitationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -29,5 +28,10 @@ public class InvitationController {
     @GetMapping
     public ArrayList<Invitation> getAllInvitations() {
         return invitationService.getAllInvitations();
+    }
+
+    @PutMapping(path = "/{invitedPersonUrl}")
+    public ReturnMessage createNewInvitation(@RequestBody Invitation invitation, @PathVariable String invitedPersonUrl) {
+        return invitationService.getUserWithSearchedUrl(invitedPersonUrl, invitation);
     }
 }

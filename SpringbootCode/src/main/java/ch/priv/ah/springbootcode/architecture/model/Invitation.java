@@ -14,17 +14,17 @@ public class Invitation {
     private boolean isOpen;
     private boolean hasBeenAccepted;
     private LocalDateTime whenSent;
-    private String senderNumber;
-    private String recieverNumber;
+    private String senderUrl;
+    private String recieverUrl;
     private String groupUrl;
 
-    public Invitation(String senderNumber, String groupUrl) {
+    public Invitation(String senderUrl, String groupUrl) {
         this.id = newestId;
         newestId++;
         this.whenSent = LocalDateTime.now();
         this.isOpen = true;
         this.hasBeenAccepted = false;
-        this.senderNumber = senderNumber;
+        this.senderUrl = senderUrl;
         this.groupUrl = groupUrl;
     }
 
@@ -60,20 +60,20 @@ public class Invitation {
         this.whenSent = whenSent;
     }
 
-    public String getSenderNumber() {
-        return senderNumber;
+    public String getSenderUrl() {
+        return senderUrl;
     }
 
-    public void setSenderNumber(String senderNumber) {
-        this.senderNumber = senderNumber;
+    public void setSenderUrl(String senderUrl) {
+        this.senderUrl = Invitation.this.senderUrl;
     }
 
-    public String getRecieverNumber() {
-        return recieverNumber;
+    public String getRecieverUrl() {
+        return recieverUrl;
     }
 
-    public void setRecieverNumber(String recieverNumber) {
-        this.recieverNumber = recieverNumber;
+    public void setRecieverUrl(String recieverUrl) {
+        this.recieverUrl = recieverUrl;
     }
 
     public String getGroupUrl() {
@@ -91,8 +91,8 @@ public class Invitation {
                 ", isOpen=" + isOpen +
                 ", hasBeenAccepted=" + hasBeenAccepted +
                 ", whenSent=" + whenSent +
-                ", senderNumber=" + senderNumber +
-                ", recieverNumber=" + recieverNumber +
+                ", senderUrl=" + senderUrl +
+                ", recieverUrl=" + recieverUrl +
                 ", groupUrl=" + groupUrl +
                 '}';
     }

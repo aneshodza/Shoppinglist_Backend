@@ -23,7 +23,7 @@ public class CorsConfiguration {
                         .allowedMethods("GET", "POST", "PUT")
                         .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/people/{id}")
-                        .allowedMethods("POST")
+                        .allowedMethods("POST", "GET")
                         .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/people/{id}/my-groups")
                         .allowedMethods("GET")
@@ -41,6 +41,10 @@ public class CorsConfiguration {
                         .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/groups/{groupUrl}")
                         .allowedMethods("GET")
+                        .allowedOrigins("http://localhost:3000");
+
+                registry.addMapping("/invitations/{invitedPersonUrl}")
+                        .allowedMethods("PUT")
                         .allowedOrigins("http://localhost:3000");
             }
         };
