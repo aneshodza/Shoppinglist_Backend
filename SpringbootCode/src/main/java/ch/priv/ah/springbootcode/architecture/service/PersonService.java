@@ -72,7 +72,7 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public Object getUserByUrl(String myUrl) {
+    public Object getPersonByUrl(String myUrl) {
         Optional<Person> myPerson = wholeRepository.getPeople()
                 .stream()
                 .filter(person -> myUrl.equals(person.getownUrl()))
@@ -80,6 +80,6 @@ public class PersonService {
         if (myPerson.isEmpty()) {
             return new ReturnMessage(1, "There was no such person found", false);
         }
-        return myPerson;
+        return myPerson.get();
     }
 }

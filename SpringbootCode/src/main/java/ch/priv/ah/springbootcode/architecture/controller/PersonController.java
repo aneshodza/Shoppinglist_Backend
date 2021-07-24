@@ -47,6 +47,6 @@ public class PersonController {
 
     @GetMapping(path = "/{myUrl}")
     public Object getUserByUrl(@PathVariable String myUrl) {
-        return personService.getUserByUrl(myUrl);
+        return personService.getPersonByUrl(myUrl);
     }
 }

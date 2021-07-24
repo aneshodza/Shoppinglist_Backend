@@ -4,6 +4,7 @@ import ch.priv.ah.springbootcode.architecture.model.Group;
 import ch.priv.ah.springbootcode.architecture.model.Invitation;
 import ch.priv.ah.springbootcode.architecture.model.Item;
 import ch.priv.ah.springbootcode.architecture.model.Person;
+import ch.priv.ah.springbootcode.architecture.otherServices.ReturnMessage;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -29,17 +30,17 @@ public class WholeRepository {
         invitations = new ArrayList<>();
 
         groups.add(
-                new Group("Test group")
+                new Group("Test group", "g87eg7mVes")
         );
         groups.add(
-                new Group("Second test group")
+                new Group("Second test group", "f34gme50gw")
         );
 
         people.add(
-                new Person("Anes", "Hodza", "12345678", "anes.hodza")
+                new Person("Anes", "Hodza", "12345678", "anes.hodza", "JR93y")
         );
         people.add(
-                    new Person("Meriton", "Aliu", "12345678", "meriton.aliu")
+                    new Person("Meriton", "Aliu", "12345678", "meriton.aliu", "Sze4v")
         );
 
         items.add(

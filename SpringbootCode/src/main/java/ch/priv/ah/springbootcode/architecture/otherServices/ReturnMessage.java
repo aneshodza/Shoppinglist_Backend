@@ -1,5 +1,6 @@
 package ch.priv.ah.springbootcode.architecture.otherServices;
 
+import ch.priv.ah.springbootcode.architecture.model.Person;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**

@@ -48,16 +48,20 @@ public class Person {
         invitations = new ArrayList<>();
     }
 
-    public Person() {
-    }
-
-    public Person(long id, String username) {
-        this.username = username;
-    }
-
-    public Person(String username, String password) {
+    public Person(String first_name, String last_name, String password, String username, String myUrl) {
+        this.id = newestId;
+        newestId++;
+        usedUrls.add(myUrl);
+        this.ownUrl = myUrl;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.username = username;
         this.password = password;
+        groupIds = new ArrayList<>();
+        invitations = new ArrayList<>();
+    }
+
+    public Person() {
     }
 
     public void addGroup(long newGroupId) {
@@ -67,7 +71,7 @@ public class Person {
 
     public void addInvitation(Invitation invitation) {
         invitations.add(invitation);
-        invitation.setRecieverNumber(this.ownUrl);
+        invitation.setRecieverUrl(this.ownUrl);
     }
 
     public static long getNewestId() {
