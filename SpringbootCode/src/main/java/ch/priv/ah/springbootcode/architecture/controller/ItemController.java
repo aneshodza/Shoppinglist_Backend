@@ -37,7 +37,8 @@ public class ItemController {
     }
 
     @PutMapping(path = "/{groupId}")
-    public ReturnMessage createNewItem(@RequestBody Item newItem) {
+    public ReturnMessage createNewItem(@RequestBody Item newItem, @PathVariable long groupId) {
+        newItem.setGroupId(groupId);
         return itemService.createNewItem(newItem);
     }
 }
