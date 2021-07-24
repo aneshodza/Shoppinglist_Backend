@@ -7,7 +7,6 @@ import ch.priv.ah.springbootcode.architecture.persistence.WholeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -46,7 +45,13 @@ public class ItemService {
     }
 
     public ReturnMessage createNewItem(Item item) {
-        wholeRepository.addNewItem(item);
+        wholeRepository.getGroups()
+                .stream()
+                .filter(group -> group.getId() == item.getGroupId())
+                .findFirst()
+                .get()
+                .addItem(item);
+        wholeRepository.getItems().add(item);
         return new ReturnMessage(0, "The item has been added", true);
     }
 }
