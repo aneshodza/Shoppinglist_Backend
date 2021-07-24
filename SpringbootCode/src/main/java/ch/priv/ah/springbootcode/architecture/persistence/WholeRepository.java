@@ -75,14 +75,6 @@ public class WholeRepository {
                 .get();
     }
 
-    public Group getGroupByUrl(String url) {
-        return groups
-                .stream()
-                .filter(group -> group.getGroupUrl().equals(url))
-                .findFirst()
-                .get();
-    }
-
     public ArrayList<Person> getPeople() {
         return people;
     }
@@ -110,21 +102,7 @@ public class WholeRepository {
         items.removeIf(item -> item.getId() == id);
     }
 
-    public void addNewItem(Item item) {
-        items.add(item);
-        groups
-                .stream()
-                .filter(group -> group.getId() == item.getGroupId())
-                .findFirst()
-                .get()
-                .addItem(item);
-    }
-
     public ArrayList<Invitation> getInvitations() {
         return invitations;
-    }
-
-    public void setInvitations(ArrayList<Invitation> invitations) {
-        this.invitations = invitations;
     }
 }

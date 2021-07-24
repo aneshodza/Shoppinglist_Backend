@@ -44,4 +44,9 @@ public class PersonController {
     public ArrayList getMyGroups(@PathVariable long id) {
         return personService.getAllMyGroups(id);
     }
+
+    @GetMapping(path = "/{myUrl}")
+    public Object getUserByUrl(@PathVariable String myUrl) {
+        return personService.getUserByUrl(myUrl);
+    }
 }

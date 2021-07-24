@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -31,32 +32,34 @@ public class PersonService {
         return wholeRepository.getPeople();
     }
 
-    public Object checkForUser(Person person) {
-        for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
-            if (wholeRepository.getPeople().get(i).getUsername().equals(person.getUsername()) &&
-                    wholeRepository.getPeople().get(i).getPassword().equals(person.getPassword())) {
-                return wholeRepository.getPeople().get(i);
-            }
+    public Object checkForUser(Person searchedPerson) {
+        Optional<Person> foundPerson = wholeRepository.getPeople()
+                .stream()
+                .filter(person -> person.getUsername().equals(searchedPerson.getUsername()))
+                .findFirst();
+        if (foundPerson.isEmpty()) {
+            return new ReturnMessage(1, "There is no such user", false);
+        } else if (!foundPerson.get().getPassword().equals(searchedPerson.getPassword())) {
+            return new ReturnMessage(1, "There is no such user", false);
         }
-    return new ReturnMessage(1, "There is no such user", false);
+        return foundPerson.get();
     }
 
-    public boolean checkIfUsernameIsUsed(Person person) {
-        for (int i = 0; i < wholeRepository.getPeople().size(); i++) {
-            if (wholeRepository.getPeople().get(i).getUsername().equals(person.getUsername())) {
-                return true;
-            }
-        }
-        return false;
+    public boolean checkIfUsernameIsUsed(Person searchedPerson) {
+        return wholeRepository.getPeople()
+                .stream()
+                .filter(person -> person.getUsername().equals(searchedPerson.getUsername()))
+                .findFirst()
+                .isEmpty();
     }
 
     public ReturnMessage createNewPerson(Person person){
-        if (checkIfUsernameIsUsed(person)) {
-            return new ReturnMessage(2, "Username is already in use", false);
+        if (person.getUsername().isBlank()) {
+            return new ReturnMessage(4, "Username cannot be empty", false);
         } else if (person.getPassword().length() < 8) {
             return new ReturnMessage(3, "Password is not 8 characters long", false);
-        } else if (person.getUsername().isBlank()) {
-            return new ReturnMessage(4, "Username cannot be empty", false);
+        } else if (!checkIfUsernameIsUsed(person)) {
+            return new ReturnMessage(2, "Username is already in use", false);
         }
         wholeRepository.createNewPerson(person);
         return new ReturnMessage(0, "The user has successfully been created", true);
@@ -67,5 +70,16 @@ public class PersonService {
                 .stream()
                 .filter(group -> wholeRepository.getPersonById(id).getGroupIds().contains(group.getId()))
                 .collect(Collectors.toList());
+    }
+
+    public Object getUserByUrl(String myUrl) {
+        Optional<Person> myPerson = wholeRepository.getPeople()
+                .stream()
+                .filter(person -> myUrl.equals(person.getownUrl()))
+                .findFirst();
+        if (myPerson.isEmpty()) {
+            return new ReturnMessage(1, "There was no such person found", false);
+        }
+        return myPerson;
     }
 }
