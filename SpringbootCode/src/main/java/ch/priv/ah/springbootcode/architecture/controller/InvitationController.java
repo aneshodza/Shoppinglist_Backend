@@ -32,6 +32,11 @@ public class InvitationController {
 
     @PutMapping(path = "/{invitedPersonUrl}")
     public ReturnMessage createNewInvitation(@RequestBody Invitation invitation, @PathVariable String invitedPersonUrl) {
-        return invitationService.getUserWithSearchedUrl(invitedPersonUrl, invitation);
+        return invitationService.CreateNewInvitation(invitedPersonUrl, invitation);
+    }
+
+    @PostMapping
+    public ReturnMessage reactToInvitation(@RequestBody Invitation invitation) {
+        return invitationService.reactToInvitation(invitation);
     }
 }

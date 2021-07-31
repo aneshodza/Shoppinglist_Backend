@@ -35,12 +35,18 @@ public class WholeRepository {
         groups.add(
                 new Group("Second test group", "f34gme50gw")
         );
+        groups.add(
+                new Group("Third test group", "54geGfBteF")
+        );
 
         people.add(
                 new Person("Anes", "Hodza", "12345678", "anes.hodza", "JR93y")
         );
         people.add(
-                    new Person("Meriton", "Aliu", "12345678", "meriton.aliu", "Sze4v")
+                new Person("Meriton", "Aliu", "12345678", "meriton.aliu", "Sze4v")
+        );
+        people.add(
+                new Person("Ismail", "Hodza", "12345678", "ismail.hodza", "43gmS")
         );
 
         items.add(
@@ -51,12 +57,13 @@ public class WholeRepository {
         );
 
         invitations.add(
-                new Invitation(people.get(0).getownUrl(), groups.get(1).getGroupUrl())
+                new Invitation(people.get(0).getownUrl(), groups.get(1).getGroupUrl(), people.get(0).getUsername(), groups.get(1).getGroupName())
         );
 
         groups.get(1).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(0));
         groups.get(0).addPersonToThisGroup(people.get(1));
+        groups.get(2).addPersonToThisGroup(people.get(0));
 
         groups.get(0).addItemToThisGroup(items.get(0));
         groups.get(0).addItemToThisGroup(items.get(1));

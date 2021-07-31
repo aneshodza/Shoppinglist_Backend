@@ -36,7 +36,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public ReturnMessage signUp(@RequestBody Person person) {
+    public Object signUp(@RequestBody Person person) {
         return personService.createNewPerson(person);
     }
 
