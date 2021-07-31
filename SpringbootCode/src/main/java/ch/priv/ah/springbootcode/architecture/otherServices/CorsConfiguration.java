@@ -43,6 +43,9 @@ public class CorsConfiguration {
                         .allowedMethods("GET")
                         .allowedOrigins("http://localhost:3000");
 
+                registry.addMapping("/invitations")
+                        .allowedMethods("POST")
+                        .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/invitations/{invitedPersonUrl}")
                         .allowedMethods("PUT")
                         .allowedOrigins("http://localhost:3000");

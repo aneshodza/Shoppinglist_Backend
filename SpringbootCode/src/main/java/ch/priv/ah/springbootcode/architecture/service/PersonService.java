@@ -53,7 +53,7 @@ public class PersonService {
                 .isEmpty();
     }
 
-    public ReturnMessage createNewPerson(Person person){
+    public Object createNewPerson(Person person){
         if (person.getUsername().isBlank()) {
             return new ReturnMessage(4, "Username cannot be empty", false);
         } else if (person.getPassword().length() < 8) {
@@ -62,7 +62,7 @@ public class PersonService {
             return new ReturnMessage(2, "Username is already in use", false);
         }
         wholeRepository.createNewPerson(person);
-        return new ReturnMessage(0, "The user has successfully been created", true);
+        return wholeRepository.getPeople().get(wholeRepository.getPeople().size()-1);
     }
 
     public ArrayList getAllMyGroups(long id) {
