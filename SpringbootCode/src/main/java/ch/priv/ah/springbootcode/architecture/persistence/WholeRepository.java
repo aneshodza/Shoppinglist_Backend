@@ -95,6 +95,14 @@ public class WholeRepository {
                 .get();
     }
 
+    public Person getPersonByUrl(String url) {
+        return people
+                .stream()
+                .filter(person -> person.getownUrl().equals(url))
+                .findFirst()
+                .get();
+    }
+
     public Person createNewPerson(Person person) {
         people.add(
                 new Person(person.getFirst_name(), person.getLast_name(), person.getPassword(), person.getUsername())

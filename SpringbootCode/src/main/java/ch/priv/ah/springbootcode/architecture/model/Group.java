@@ -61,6 +61,22 @@ public class Group {
         item.setGroupId(this.id);
     }
 
+    public void giveMeUrl() {
+        boolean abort = false;
+        String newUrl = "";
+        while (!abort) {
+            abort = true;
+            newUrl = randomString.getAlphaNumericString(10);
+            for (int i = 0; i < usedUrls.size(); i++) {
+                if (newUrl.equals(usedUrls.get(i))) {
+                    abort = false;
+                }
+            }
+        }
+        usedUrls.add(newUrl);
+        this.groupUrl = newUrl;
+    }
+
     public void addItem(Item item) {
         items.add(item);
     }
