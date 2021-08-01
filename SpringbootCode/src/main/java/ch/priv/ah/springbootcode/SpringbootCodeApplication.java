@@ -11,11 +11,11 @@ import java.io.FileOutputStream;
 @SpringBootApplication
 public class SpringbootCodeApplication {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) /*throws FileNotFoundException*/ {
         SpringApplication.run(SpringbootCodeApplication.class, args);
-        System.setOut(new OwnPrintStream(new FileOutputStream("../callslog.log")));
-        System.out.println("Start of the log file");
-        System.out.println("");
+//        System.setOut(new OwnPrintStream(new FileOutputStream("../callslog.log")));
+//        System.out.println("Start of the log file");
+//        System.out.println("");
     }
 
 }
