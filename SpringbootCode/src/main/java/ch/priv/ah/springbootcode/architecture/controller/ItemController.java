@@ -6,6 +6,8 @@ import ch.priv.ah.springbootcode.architecture.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +28,7 @@ public class ItemController {
     }
 
     @GetMapping
-    public ArrayList getAllPeople() {
+    public ArrayList getAllItems() {
         return itemService.getAllItems();
     }
 
