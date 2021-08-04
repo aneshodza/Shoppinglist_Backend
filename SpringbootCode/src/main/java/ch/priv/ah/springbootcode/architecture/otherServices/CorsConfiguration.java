@@ -40,7 +40,7 @@ public class CorsConfiguration {
                         .allowedMethods("GET")
                         .allowedOrigins("http://localhost:3000");
                 registry.addMapping("/groups/{groupUrl}")
-                        .allowedMethods("GET")
+                        .allowedMethods("GET", "PUT")
                         .allowedOrigins("http://localhost:3000");
 
                 registry.addMapping("/invitations")
