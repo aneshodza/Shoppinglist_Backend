@@ -20,11 +20,34 @@ public class CorsConfiguration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/people")
+                        .allowedMethods("GET", "POST", "PUT")
+                        .allowedOrigins("http://localhost:3000");
+                registry.addMapping("/people/{id}")
+                        .allowedMethods("POST", "GET")
+                        .allowedOrigins("http://localhost:3000");
+                registry.addMapping("/people/{id}/my-groups")
                         .allowedMethods("GET")
                         .allowedOrigins("http://localhost:3000");
 
                 registry.addMapping("/items")
                         .allowedMethods("GET")
+                        .allowedOrigins("http://localhost:3000");
+                registry.addMapping("/items/{id}")
+                        .allowedMethods("DELETE", "PUT")
+                        .allowedOrigins("http://localhost:3000");
+
+                registry.addMapping("/groups")
+                        .allowedMethods("GET")
+                        .allowedOrigins("http://localhost:3000");
+                registry.addMapping("/groups/{groupUrl}")
+                        .allowedMethods("GET", "PUT")
+                        .allowedOrigins("http://localhost:3000");
+
+                registry.addMapping("/invitations")
+                        .allowedMethods("POST")
+                        .allowedOrigins("http://localhost:3000");
+                registry.addMapping("/invitations/{invitedPersonUrl}")
+                        .allowedMethods("PUT")
                         .allowedOrigins("http://localhost:3000");
             }
         };

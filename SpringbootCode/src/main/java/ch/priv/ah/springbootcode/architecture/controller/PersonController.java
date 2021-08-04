@@ -1,10 +1,12 @@
 package ch.priv.ah.springbootcode.architecture.controller;
 
 import ch.priv.ah.springbootcode.architecture.model.Person;
+import ch.priv.ah.springbootcode.architecture.otherServices.ReturnMessage;
 import ch.priv.ah.springbootcode.architecture.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -29,13 +31,23 @@ public class PersonController {
         return personService.getAllPeople();
     }
 
-    @PostMapping
-    public Person attemptLogIn(@RequestBody Person person) {
+    @PutMapping
+    public Object attemptLogIn(@RequestBody Person person) {
         return personService.checkForUser(person);
     }
 
-    @PutMapping
-    public Person signUp(@RequestBody Person person) {
+    @PostMapping
+    public Object signUp(@RequestBody Person person) {
         return personService.createNewPerson(person);
+    }
+
+    @GetMapping(path = "/{id}/my-groups")
+    public ArrayList getMyGroups(@PathVariable long id) {
+        return personService.getAllMyGroups(id);
+    }
+
+    @GetMapping(path = "/{myUrl}")
+    public Object getUserByUrl(@PathVariable String myUrl) {
+        return personService.getPersonByUrl(myUrl);
     }
 }

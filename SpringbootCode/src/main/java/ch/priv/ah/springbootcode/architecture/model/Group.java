@@ -23,7 +23,29 @@ public class Group {
     public Group(String groupName) {
         this.id = newestId;
         newestId++;
-        this.groupUrl = randomString.getAlphaNumericString(10);
+        boolean abort = false;
+        String newUrl = "";
+        while (!abort) {
+            abort = true;
+            newUrl = randomString.getAlphaNumericString(10);
+            for (int i = 0; i < usedUrls.size(); i++) {
+                if (newUrl.equals(usedUrls.get(i))) {
+                    abort = false;
+                }
+            }
+        }
+        usedUrls.add(newUrl);
+        this.groupUrl = newUrl;
+        this.groupName = groupName;
+        members = new ArrayList<>();
+        items = new ArrayList<>();
+    }
+
+    public Group(String groupName, String groupUrl) {
+        this.id = newestId;
+        newestId++;
+        usedUrls.add(groupUrl);
+        this.groupUrl = groupUrl;
         this.groupName = groupName;
         members = new ArrayList<>();
         items = new ArrayList<>();
@@ -34,10 +56,33 @@ public class Group {
         person.addGroup(this.id);
     }
 
-    public void addItemToThisGroup(Item item, long personId) {
+    public void addItemToThisGroup(Item item) {
         items.add(item);
         item.setGroupId(this.id);
-        item.setPersonId(personId);
+    }
+
+    public void giveMeUrl() {
+        boolean abort = false;
+        String newUrl = "";
+        while (!abort) {
+            abort = true;
+            newUrl = randomString.getAlphaNumericString(10);
+            for (int i = 0; i < usedUrls.size(); i++) {
+                if (newUrl.equals(usedUrls.get(i))) {
+                    abort = false;
+                }
+            }
+        }
+        usedUrls.add(newUrl);
+        this.groupUrl = newUrl;
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void removeItemFromThisGroup(long id) {
+        items.removeIf(item -> item.getId() == id);
     }
 
     public static long getNewestId() {
